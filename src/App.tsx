@@ -15,7 +15,6 @@ import AddUser from "./health_Station/admin/profile/addUser";
 import Adldatahistorytable from "./health_Station/admin/userfrom/adldatahistorytable";
 import CareguvebFromId from "./health_Station/admin/caregiverInformation/careguvebFromId/page";
 import Profile from "./health_Station/admin/profile/profile";
-import EditProfile from "./health_Station/admin/adminProfile/editprofile";
 import CaregiverInformation from "./health_Station/admin/caregiverInformation/page";
 import SavedHealthInformation from "./health_Station/admin/savedHealthInformation/page";
 import Map from "./health_Station/admin/map/page";
@@ -25,6 +24,7 @@ import Elderly from "./health_Station/User/elderly/page";
 import ShowInformation from "./health_Station/admin/caregiverInformation/showInformation";
 import Err from "./health_Station/pageErr/page";
 import Caregivens from "./health_Station/User/caregivens/page";
+import Create from "./health_Station/User/elderly/create";
 const App: React.FC = () => {
   return (
     <Router>
@@ -39,6 +39,7 @@ const App: React.FC = () => {
           <Route path="/health_Station/dailyRoutineAssessmentFormADL" element={<Daily_routine_assessment_form_ADL />} />
           <Route path="/health_Station/elderly" element={<Elderly />} />
           <Route path="/health_Station/User/caregivens" element={<Caregivens />} />
+          <Route path="/health_Station/elderly/create" element={<Create />} />
           <Route path="/test" element={<Test  />} />
           
           <Route path="/admin" element={<Admin />} />
@@ -53,7 +54,6 @@ const App: React.FC = () => {
           <Route path="/admin/caregiverInformation" element={<CaregiverInformation />} />
           <Route path="/admin/caregiverInformation/careguvebFromId" element={<CareguvebFromId />} />
           <Route path="/admin/Profile" element={<Profile />} />
-          <Route path="/admin/Profile/editprofile" element={<EditProfile />} />
           <Route path="/admin/savedHealthInformation" element={<SavedHealthInformation />} />
           <Route path="/admin/map" element={<Map />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />

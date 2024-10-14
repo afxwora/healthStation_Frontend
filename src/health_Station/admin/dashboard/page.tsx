@@ -364,11 +364,15 @@ const Dashboard: React.FC = () => {
               <div className="rounded-lg p-2  w-full text-start bg-neutral-50">
                 จำนวนผู้พิการตามหมู่บ้าน
                 <div style={{ width: "100%", height: 300 }}>
-                  {data ? (
+                  {loading ? (
+                    <p>Loading data...</p>
+                  ) : error ? (
+                    <p>{error}</p>
+                  ) : (
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
+                        <XAxis dataKey="label" /> {/* ใช้ label แทน name */}
                         <YAxis />
                         <Tooltip />
                         <Legend />
@@ -379,8 +383,6 @@ const Dashboard: React.FC = () => {
                         </Bar>
                       </BarChart>
                     </ResponsiveContainer>
-                  ) : (
-                    <p>Loading data...</p>
                   )}
                 </div>
               </div>

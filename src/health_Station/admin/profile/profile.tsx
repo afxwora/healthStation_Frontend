@@ -37,6 +37,11 @@ interface StatusMaster {
   statusmaster: string;
 }
 
+interface ApiResponse {
+  countallMaster: number;
+
+}
+
 const Profile: React.FC = () => {
   const [data, setData] = useState<Data[]>([]);
   const [profileData, setProfileData] = useState<ProfileData[] | null>(null);
@@ -50,7 +55,7 @@ const Profile: React.FC = () => {
   const [searchQuerys, setSearchQuerys] = useState<string>("");
   const [finalResult, setFinalResult] = useState<Data[]>([]);
   const [selectedId, setSelectedId] = useState<number | null>(null);
-
+  const [countallMaster, setCountallMaster] = useState<number | null>(null);
   useEffect(() => {
     if (searchQuerys === "") {
       setFinalResult(data);
@@ -178,6 +183,23 @@ const Profile: React.FC = () => {
       setError("editvalue not updated");
     }
   };
+
+  useEffect(() => {
+    axios
+      .get<ApiResponse>(`http://localhost:9999/api/users/allMaster`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        setCountallMaster(response.data.countallMaster);
+      })
+      .catch((error) => {
+        setError("เกิดข้อผิดพลาดในการดึงข้อมูล");
+      });
+  }, []);
+
   useEffect(() => {
     allMaster();
   }, []);
@@ -202,10 +224,19 @@ const Profile: React.FC = () => {
             <div className="bg-neutral-100 ">
               <div className="bg-white w-64  m-4 p-4">
                 <div className="grid grid-cols-2 ">
-                  จัดการผู้ใช้งาน
+                  <div>
+                    จัดการผู้ใช้งาน
+                    <div className="text-start flex text-blue-500">
+                      <div className="mr-2">
+                      {countallMaster}
+                      </div>
+                      <div>คน</div>
+                      </div>
+                  </div>
                   <Link to="/admin/Proflile/addUser">
                     <button className="bg-blue-600 p-2 rounded-md w-full text-white">
                       +เพิ่มผู้ใช้งาน
+
                     </button>
                   </Link>
                 </div>
@@ -508,48 +539,48 @@ const Profile: React.FC = () => {
                                         </div>
                                       )}
 
-<div className="">
-                  <div className="bg-white rounded-lg shadow-lg p-6 relative">
-                    <div className="flex flex-col items-end justify-end">
-                      <button
-                        onClick={openPopup}
-                        className="bg-white text-blue-500 border border-blue-500 py-2 px-4 rounded-xl"
-                      >
-                        อัพเดทสถานะการใช้งาน
-                      </button>
-                      {isPopupOpen && (
-                        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
-                          <div className="bg-white rounded-lg shadow-lg p-6  relative">
-                            <div className="flex items-center justify-center h-full">
-                              <img
-                                src={lifesaversHand}
-                                alt="lifesaversHand"
-                                className="max-w-full max-h-full"
-                              />
-                            </div>
-                            <h2 className="text-xl font-bold p-4">
-                              ต้องการอัพเดตสถานะของผู้ใช้หรือไม่
-                            </h2>
-                            <div className="flex justify-between">
-                              <button
-                                onClick={closePopup}
-                                className="p-2 bg-gray-200 rounded-lg"
-                              >
-                                ยกเลิก
-                              </button>
-                              <button
-                                onClick={handleSubmits}
-                                className="p-2 bg-blue-500 text-white rounded-lg"
-                              >
-                                ยืนยัน
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                                      <div className="">
+                                        <div className="bg-white rounded-lg shadow-lg p-6 relative">
+                                          <div className="flex flex-col items-end justify-end">
+                                            <button
+                                              onClick={openPopup}
+                                              className="bg-white text-blue-500 border border-blue-500 py-2 px-4 rounded-xl"
+                                            >
+                                              อัพเดทสถานะการใช้งาน
+                                            </button>
+                                            {isPopupOpen && (
+                                              <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+                                                <div className="bg-white rounded-lg shadow-lg p-6  relative">
+                                                  <div className="flex items-center justify-center h-full">
+                                                    <img
+                                                      src={lifesaversHand}
+                                                      alt="lifesaversHand"
+                                                      className="max-w-full max-h-full"
+                                                    />
+                                                  </div>
+                                                  <h2 className="text-xl font-bold p-4">
+                                                    ต้องการอัพเดตสถานะของผู้ใช้หรือไม่
+                                                  </h2>
+                                                  <div className="flex justify-between">
+                                                    <button
+                                                      onClick={closePopup}
+                                                      className="p-2 bg-gray-200 rounded-lg"
+                                                    >
+                                                      ยกเลิก
+                                                    </button>
+                                                    <button
+                                                      onClick={handleSubmits}
+                                                      className="p-2 bg-blue-500 text-white rounded-lg"
+                                                    >
+                                                      ยืนยัน
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            )}
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </TableRow>
                                 </TableHead>

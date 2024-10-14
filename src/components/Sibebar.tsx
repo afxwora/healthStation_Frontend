@@ -33,9 +33,9 @@ export default function TemporaryDrawer() {
 
   const DrawerList = () => (
     <div className="flex m-4">
-      <Box sx={{ width: "auto" }} role="presentation" className="m-4">
+      <Box sx={{ width: "260px" }} role="presentation" className="m-4 ">
         <div>
-          <Accordion className="bg-blue-500 m-4">
+          <Accordion className="bg-blue-500 m-4 ">
             <AccordionSummary
               expandIcon={<ArrowDropDownIcon />}
               aria-controls="panel2-content"
@@ -45,7 +45,7 @@ export default function TemporaryDrawer() {
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                <div>
+                <div className="">
                   <Link to="/health_Station">
                     <button
                       className={`rounded-full p-2 text-left w-full flex items-center  ${
@@ -61,7 +61,7 @@ export default function TemporaryDrawer() {
                         alt="Chart"
                         className="object-cover snap-center"
                       />
-                      <span className="ml-2">บันทึกข้อมูลใหม่</span>
+                      <span className="ml-2 ">บันทึกข้อมูลใหม่</span>
                     </button>
                   </Link>
                   <Link to="/health_Station/elderly">
@@ -82,7 +82,7 @@ export default function TemporaryDrawer() {
                         className="object-cover snap-center"
                       />
                       <span className="ml-2">
-                        บันทึกข้อมูลผู้ดูแลผู้สูงอายุ
+                        บันทึกข้อมูลผู้ดูแล
                       </span>
                     </button>
                   </Link>

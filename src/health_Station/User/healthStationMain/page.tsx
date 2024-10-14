@@ -257,7 +257,7 @@ const handleFilterChange = (value: string) => {
                             className="object-cover snap-center"
                           />
                           <span className="ml-2">
-                            บันทึกข้อมูลผู้ดูแลผู้สูงอายุ
+                          บันทึกข้อมูลผู้ดูแล
                           </span>
                         </button>
                       </Link>

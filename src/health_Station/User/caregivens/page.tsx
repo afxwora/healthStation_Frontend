@@ -176,7 +176,7 @@ const Caregivens: React.FC = () => {
                             className="object-cover snap-center"
                           />
                           <span className="ml-2">
-                            บันทึกข้อมูลผู้ดูแลผู้สูงอายุ
+                            บันทึกข้อมูลผู้ดูแล
                           </span>
                         </button>
                       </Link>
@@ -215,7 +215,7 @@ const Caregivens: React.FC = () => {
                     />
                   </button>
                 </Link>
-                <div className="text-2xl">บันทึกข้อมูลผู้ดูแล</div>
+                <div className="text-2xl">บันทึกเพิ่มผู้ดูแล</div>
               </div>
             </div>
             <Accordion className="bg-blue-500">
@@ -224,7 +224,7 @@ const Caregivens: React.FC = () => {
                 aria-controls="panel2-content"
                 id="panel2-header"
               >
-                <Typography>ข้อมูลส่วนตัวบุคคล</Typography>
+                <Typography>ข้อมูลเพิ่มผู้ดูแล</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
