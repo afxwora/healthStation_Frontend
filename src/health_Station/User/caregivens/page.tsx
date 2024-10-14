@@ -85,6 +85,7 @@ const Caregivens: React.FC = () => {
         setErrors({});
         window.location.href = "/health_Station"; // <-- Navigate to the desired route after form submission
       }
+      
     } catch (error) {
       setSsnError("ไม่มีข้อมูลผู้ใช้");
       setIsSsnError(true);

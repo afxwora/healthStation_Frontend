@@ -68,7 +68,8 @@ const validationSchema = Yup.object().shape({
     .required("กรุณากรอก เลขประจำตัวประชาชน")
     .matches(
       /^\d{13}$/,
-      "กรุณากรอกเป็นตัวเลขเท่านั้น,เลขประจำตัวประชาชนต้องมี 13 หลัก"
+      "กรุณากรอกเป็นตัวเลขเท่านั้น,เลขประจำตัวประชาชนต้องมี 13 หลัก",
+      
     ),
 
   // เลขประจำตัวประชาชนของผู้ดูแลก็เช่นกัน
@@ -247,6 +248,11 @@ const PersonalRecordData: React.FC = () => {
         if (error.response) {
           console.error("API error:", error.response.data);
           const apiErrors = error.response.data.errors;
+
+          if (error.response.status === 409) {
+            newErrors.ssd = "เลขบัตรประชาชนนี้มีอยู่ในระบบแล้ว";
+          }
+          
           if (apiErrors) {
             Object.keys(apiErrors).forEach((key) => {
               newErrors[key as keyof Errors] = apiErrors[key];
